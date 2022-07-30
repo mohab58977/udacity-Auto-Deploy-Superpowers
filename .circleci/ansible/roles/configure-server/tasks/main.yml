@@ -3,7 +3,7 @@
   become: true
   shell: |
     #Install Node.js LTS version as our base Node.js version
-    curl -fSSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     sudo apt install -y nodejs
     
     #Use n version manager to use Node.js v13.8.0
