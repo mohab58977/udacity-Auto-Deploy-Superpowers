@@ -10,16 +10,16 @@ commands:
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             sudo ./aws/install
-  install_nodejs:
-    description: Install nodejs 13.8.0
-    steps:
-      - run:
-          name: Install nodejs 
-          shell: |
-          curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-          sudo apt install -y nodejs
-          sudo npm install --global n
-          sudo n 13.8.0
+  # install_nodejs:
+  #   description: Install nodejs 13.8.0
+  #   steps:
+  #     - run:
+  #         name: Install nodejs 
+  #         command: |
+  #         curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+  #         sudo apt install -y nodejs
+  #         sudo npm install --global n
+  #         sudo n 13.8.0
   install_ansible:
     description: Install Ansible
     steps:
