@@ -10,6 +10,19 @@ commands:
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             sudo ./aws/install
+  install_nodejs:
+    description: Install nodejs 13.8.0
+    steps:
+      - run:
+          name: Install nodejs 
+          command: |
+          #Install Node.js LTS version as our base Node.js version
+          curl -fSSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+          sudo apt install -y nodejs
+          
+          #Use n version manager to use Node.js v13.8.0
+          sudo npm install --global n
+          sudo n 13.8.0
   install_ansible:
     description: Install Ansible
     steps:
@@ -191,24 +204,24 @@ jobs:
       - destroy-environment
 
 
-#   configure-infrastructure:
-#     docker:
-#       # Docker image here that supports Ansible
-#     steps:
-#       # Checkout code from git
-#       # Add ssh keys with fingerprint
-#       # attach workspace
-#       - run:
-#           name: Install dependencies
-#           command: |
-#             # Your code here
-#             exit 1
-#       - run:
-#           name: Configure server
-#           command: |
-#             # Your code here
-#             exit 1
-#       # Here's where you will add some code to rollback on failure
+  configure-infrastructure:
+    docker:
+       - image: cimg/base:stable
+    steps:
+      - checkout
+      - install_awscli
+      - install_ansible
+      - add_ssh_keys:
+          fingerprints: ["fd:d7:56:08:07:3a:f9:19:40:c0:a9:e0:82:ea:c4:84"]
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Configure Server
+          command: |
+            cd .circleci/ansible
+            cat inventory.txt
+            ansible-playbook -i inventory.txt configure-server.yml
+      - destroy-environment
 
 #   run-migrations:
 #     docker:
@@ -340,8 +353,8 @@ workflows:
            filters:
              branches:
                only: [master]
-      # - configure-infrastructure:
-      #     requires: [deploy-infrastructure]
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]
       # - run-migrations:
       #     requires: [configure-infrastructure]
       # - deploy-frontend:
