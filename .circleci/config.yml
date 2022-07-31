@@ -16,6 +16,15 @@ commands:
       - run:
           name: Install nodejs 
           command: |
+            sudo apt update -y
+            sudo apt install -y postgresql postgresql-contrib postgresql-client
+            sudo dpkg --status postgresql
+
+
+            sudo systemd-resolve --flush-caches
+            sudo resolvectl flush-caches
+            sudo systemd-resolve --statistics
+
             #Install Node.js LTS version as our base Node.js version
             curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
             sudo apt install -y nodejs  
@@ -235,15 +244,7 @@ jobs:
       - run:
           name: Run migrations
           command: |
-            sudo apt update -y
-            sudo apt install -y postgresql postgresql-contrib postgresql-client
-            sudo dpkg --status postgresql
-
-
-            sudo systemd-resolve --flush-caches
-            sudo resolvectl flush-caches
-            sudo systemd-resolve --statistics
-
+            
             cd backend
 
             npm install
