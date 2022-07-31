@@ -235,8 +235,8 @@ jobs:
       - run:
           name: Run migrations
           command: |
-            sudo apt update -y
-            sudo apt install -y postgresql postgresql-contrib postgresql-client
+            # sudo apt update -y
+            # sudo apt install -y postgresql postgresql-contrib postgresql-client
 
             sudo systemd-resolve --flush-caches
             sudo resolvectl flush-caches
