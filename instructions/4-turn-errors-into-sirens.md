@@ -128,3 +128,87 @@ ExecStart=/usr/local/bin/prometheus \
 WantedBy=multi-user.target
 
 
+  - job_name: 'promserver'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'prometheus'
+    ec2_sd_configs:
+      - region: us-east-1
+        port: 9100
+        filters:
+           - name: tag:project
+             values: [udapeople]
+    relabel_configs:
+      - source_labels: [__meta_ec2_tag_Project, __meta_ec2_tag_Name]
+        separator: "_"
+        target_label: instance
+      - source_labels: [__meta_ec2_instance_id]
+        target_label: instance_id
+      - source_labels: [__meta_ec2_public_dns_name]
+        target_label: public_dns_name
+
+
+        wget https://github.com/prometheus/alertmanager/releases/download/v0.21.0/alertmanager-0.21.0.linux-amd64.tar.gz &&
+tar xvfz alertmanager-0.21.0.linux-amd64.tar.gz  &&
+
+sudo cp alertmanager-0.21.0.linux-amd64/alertmanager /usr/local/bin &&
+sudo cp alertmanager-0.21.0.linux-amd64/amtool /usr/local/bin/ &&
+sudo mkdir /var/lib/alertmanager &&
+
+rm -rf alertmanager*
+
+        /etc/prometheus/alertmanager.yml.
+route:
+  group_by: [Alertname]
+  receiver: email-me
+
+receivers:
+- name: email-me
+  email_configs:
+  - to: EMAIL_YO_WANT_TO_SEND_EMAILS_TO
+    from: YOUR_EMAIL_ADDRESS
+    smarthost: smtp.gmail.com:587
+    auth_username: YOUR_EMAIL_ADDRESS
+    auth_identity: YOUR_EMAIL_ADDRESS
+    auth_password: YOUR_EMAIL_PASSWORD
+
+
+/etc/systemd/system/alertmanager.service
+[Unit]
+Description=Alert Manager
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/alertmanager \
+  --config.file=/etc/prometheus/alertmanager.yml \
+  --storage.path=/var/lib/alertmanager
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+hpkcfbqispbovgfz
+
+
+sudo systemctl daemon-reload &&
+sudo systemctl enable alertmanager   &&
+sudo systemctl start alertmanager
+
+/etc/prometheus/rules.yml
+
+groups:
+- name: Down
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 3m
+    labels:
+      severity: 'critical'
+    annotations:
+      summary: "Instance  is down"
+      description: " of job  has been down for more than 3 minutes."
