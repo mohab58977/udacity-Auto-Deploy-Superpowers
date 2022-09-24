@@ -7,7 +7,6 @@ In this project, you will prove your mastery of the following learning objective
 - Utilize a configuration management tool to accomplish deployment to cloud-based servers.
 - Surface critical server errors for diagnosis using centralized structured logging.
 
-![Diagram of CI/CD Pipeline we will be building.](udapeople.png)
 
 ### Instructions
 
@@ -19,17 +18,17 @@ In this project, you will prove your mastery of the following learning objective
 
 ### Screenshots 
 1) Working production app
-![Working Pipeline](Deliverables/SCREENSHOT.png)
+![Working Pipeline](deliverables/SCREENSHOT.png)
 
 2) Workflow in CI/CD 
-![Working Pipeline](Deliverables/SCREENSHOT10.png)
+![Working Pipeline](deliverables/SCREENSHOT10.png)
 
 3) Prometheus Node Memory Free 
-![Prometheus](Deliverables/SCREENSHOT11-2.png)
+![Prometheus](deliverables/SCREENSHOT11-2.png)
 
 
 7) Cleanup of old workflow
- ![Slack](Deliverables/SCREENSHOT09.png)
+ ![Slack](deliverables/SCREENSHOT09.png)
 
 
 ### Built With
