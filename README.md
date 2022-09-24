@@ -18,29 +18,18 @@ In this project, you will prove your mastery of the following learning objective
 * [Turn Errors into Sirens](instructions/4-turn-errors-into-sirens.md)
 
 ### Screenshots 
-1) Working CI CD pipeline
-![Working Pipeline](Deliverables/WorkingPipeline.PNG)
+1) Working production app
+![Working Pipeline](Deliverables/SCREENSHOT.png)
 
 2) Workflow in CI/CD 
-![Working Pipeline](Deliverables/SCREENSHOT010.PNG)
+![Working Pipeline](Deliverables/SCREENSHOT10.png)
 
 3) Prometheus Node Memory Free 
-![Prometheus](Deliverables/SCREENSHOT011.PNG)
+![Prometheus](Deliverables/SCREENSHOT11-2.png)
 
-4) Prometheus Disk Written Bytes 
-![Prometheus](Deliverables/SCREENSHOT011_2.PNG)
 
-5) Prometheus Alert Manager Slack integeration
-![Slack](Deliverables/SCREENSHOT012.PNG)
-
-6) Prometheus Targets 
-![Slack](Deliverabkes/URL05_SCREENSHOT.PNG)
-
-7) Cloudfront Distribution 
-![Slack](Deliverables/URL03_SCREENSHOT.PNG)
-
-8) Cleanup of old workflow
- ![Slack](Deliverables/SCREENSHOT07_2.PNG)
+7) Cleanup of old workflow
+ ![Slack](Deliverables/SCREENSHOT09.png)
 
 
 ### Built With
