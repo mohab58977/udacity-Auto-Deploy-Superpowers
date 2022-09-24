@@ -17,8 +17,8 @@ In this project, you will prove your mastery of the following learning objective
 * [Turn Errors into Sirens](instructions/4-turn-errors-into-sirens.md)
 
 ### Screenshots 
-1) Working production app
-![Working Pipeline](deliverables/SCREENSHOT.png)
+1) Working cloudfront production app
+![Working Pipeline](deliverables/[URL03_SCREENSHOT.png)
 
 2) Workflow in CI/CD 
 ![Working Pipeline](deliverables/SCREENSHOT10.png)
