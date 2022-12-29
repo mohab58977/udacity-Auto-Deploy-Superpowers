@@ -143,9 +143,9 @@ jobs:
           name: Front-end scan-vulnerabilities
           command: |
             cd frontend
-            npm install
             npm update loader-utils --depth 2 
             npm update minimist --depth 4
+            npm install
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
 
